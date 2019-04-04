@@ -1,0 +1,7 @@
+Python Modules Required -
+1. Selenium
+2. Pytube
+3. Driver for Browser
+	* Geckodriver for FireFox
+	* Chromedriver for Google Chrome
+4. Pyvirtualdisplay
