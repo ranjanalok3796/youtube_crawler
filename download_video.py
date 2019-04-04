@@ -1,6 +1,7 @@
 from pytube import YouTube
 import os
 from os import path
+import sys
 # print(len(all_streams)
 
 def filter_stream( yt ):
@@ -48,8 +49,8 @@ def filter_stream_audio( yt ):
 #         return perc
 
 def download_video( link, folder ):
-    video_folder = "Videos/"+folder
-    audio_folder = "Audios/"+folder
+    video_folder = "../Crawler-Output/Videos/"+folder
+    audio_folder = "../Crawler-Output/Audios/"+folder
     try:
         os.mkdir(video_folder)
         print("Directory " , video_folder ,  " Created ")
@@ -74,7 +75,7 @@ def download_video( link, folder ):
     # print(video_filename)
     # print(audio_filename)
     video_file_path = video_folder+"/"+video_filename
-    audio_file_path = audio_folder+"/"+audio_filename
+    audio_file_path = audio_folder+"/"+video_title+".mp3"
     # print(video_file_path)
     # print(audio_file_path)
 
@@ -84,9 +85,11 @@ def download_video( link, folder ):
         print("Downloading Video = "+ str(video_filename))
         video_stream.download(video_folder)
 
-    # print ("Downloading Audio = "+str(audio_filename))
+    # print ("Creating Audio = "+str(audio_filename))
     if path.exists(audio_file_path):
         print("Audio Already Exists = "+audio_file_path)
     else:
-        print("Downloading Audio = "+ str(audio_filename))
-        audio_stream.download(audio_folder)
+        print("Creating Audio = "+ str(audio_filename))
+        command = "ffmpeg -i \'"+video_file_path+"\' -ab 160k -ac 2 -ar 44100 \'"+audio_file_path+"'"
+        # audio_stream.download(audio_folder)
+        os.system(command)

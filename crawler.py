@@ -13,5 +13,5 @@ with open(channel_list, 'r') as csv_file:
     for row in csv_reader:
         count +=1
         if count > a:
-            command = "python3 crawl_link.py "+row[0]
+            command = "python3 crawl_link_Vdisplay.py "+row[0]
             os.system(command)
