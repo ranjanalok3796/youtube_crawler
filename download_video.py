@@ -4,6 +4,7 @@ from os import path
 import sys
 import subprocess
 import logging
+import time
 logging.basicConfig(filename='app.log',level=logging.INFO)
 
 def filter_stream( yt ):
