@@ -952,3 +952,135 @@ console.error: BroadcastService:
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
 1554452131602	Marionette	INFO	Stopped listening on port 42471
+1554452547462	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.VG4kApMduWp1"
+1554452548635	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1554452548636	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1554452548636	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1554452552245	Marionette	INFO	Listening on port 33595
+1554452552319	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:190:13
+
+[Parent 26575, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+[Parent 26575, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+[Parent 26575, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+[Parent 26575, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+[Parent 26575, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+[Parent 26575, Gecko_IOThread] WARNING: pipe error: Broken pipe: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 726
+[Parent 26575, Gecko_IOThread] WARNING: pipe error (158): Connection reset by peer: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+
+(/usr/lib/firefox/firefox:26814): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+
+(/usr/lib/firefox/firefox:26760): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+
+(/usr/lib/firefox/firefox:26734): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+1554455253822	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.PloWhss5GfUm"
+1554455254411	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1554455254412	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1554455254445	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1554455257754	Marionette	INFO	Listening on port 39853
+1554455257765	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:190:13
+
+
+(/usr/lib/firefox/firefox:28765): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+
+(/usr/lib/firefox/firefox:28792): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+
+(/usr/lib/firefox/firefox:28850): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+1554455354548	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.BvazW5uTUa3P"
+1554455355433	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1554455355434	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1554455355434	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1554455358642	Marionette	INFO	Listening on port 38469
+1554455358668	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:190:13
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0xE0008,name=PBackgroundIDBTransaction::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PBackgroundIDBTransaction::Msg_DeleteMe Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+[Parent 29163, Gecko_IOThread] WARNING: pipe error (157): Connection reset by peer: file /build/firefox-jjM0Oy/firefox-66.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+(/usr/lib/firefox/firefox:29304): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+
+(/usr/lib/firefox/firefox:29385): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+
+
+(/usr/lib/firefox/firefox:29330): Gdk-WARNING **: /usr/lib/firefox/firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :1065.
+

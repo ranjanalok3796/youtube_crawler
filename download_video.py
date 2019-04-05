@@ -19,8 +19,19 @@ def filter_stream( yt ):
             break
     return mystream
 
-# def upload_bucket( video_path, audio_path ):
-#
+def upload_bucket( video_path, audio_path ):
+    video_upload_command = "gsutil cp "+video_path+" gs://videos-dbst-shutapp/"+video_path
+    print(video_upload_command)
+    os.system(video_upload_command)
+    remove_video_command = "rm "+video_path
+    os.system(remove_video_command)
+    audio_upload_command = "gsutil cp "+audio_path+" gs://videos-dbst-shutapp/"+audio_path
+    print(audio_upload_command)
+    os.system(audio_upload_command)
+    remove_audio_command = "rm "+audio_path
+    os.system(remove_audio_command)
+
+
 
 def download_video( link, folder ):
     folder = folder.replace(" ","_")
@@ -71,3 +82,8 @@ def download_video( link, folder ):
         command = "ffmpeg -i \'"+video_file_path+"\' -ab 160k -ac 2 -ar 44100 \'"+audio_file_path+"'"
         # audio_stream.download(audio_folder)
         os.system(command)
+
+    if path.exists(video_file_path):
+        upload_bucket(video_file_path,audio_file_path)
+    else:
+        print("Could not run upload bucket")

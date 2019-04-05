@@ -5,4 +5,5 @@ Python Modules Required -
 	* Geckodriver for FireFox
 	* Chromedriver for Google Chrome
 4. Pyvirtualdisplay - https://www.vionblog.com/selenium-headless-firefox-webdriver-using-pyvirtualdisplay/
+5. Xvfb or Xephyr or Xvnc.
 5. FFMPEG
