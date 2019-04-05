@@ -5,6 +5,9 @@ import csv
 import sys
 import download_video
 from os import path
+import logging
+logging.basicConfig(filename='app.log',level=logging.INFO)
+
 driver = webdriver.Firefox()
 
 channel_link = sys.argv[1]
@@ -87,13 +90,14 @@ with open(csvfile, mode='w') as mycsv:
             localtime = time.asctime( time.localtime(time.time()) )
             csv_writer.writerow([channel_name, title, views, vtime, vlink, localtime ])
             download_video.download_video(vlink,channel_name)
-        except:
+        except Exception as e:
+            logging.error("Error - " + str(e))
             csv_writer.writerow([channel_name,"Could Not be Downloaded please try again" ])
-            with open('download_error.csv', mode='a') as errorcsv:
-                error_writer = csv.writer(errorcsv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                localtime = time.asctime( time.localtime(time.time()) )
-                error_writer.writerow([channel_name,"Could Not be Downloaded please try again", localtime ])
-            print("Could Not be Downloaded please try again")
+            # with open('download_error.csv', mode='a') as errorcsv:
+            #     error_writer = csv.writer(errorcsv, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            #     localtime = time.asctime( time.localtime(time.time()) )
+            #     error_writer.writerow([channel_name,"Could Not be Downloaded please try again", localtime ])
+            # print("Could Not be Downloaded please try again")
             break
 
 print ("Total Links Found = "+ str(len(elems))+" at "+channel_name+" .CSV FILE CREATED")

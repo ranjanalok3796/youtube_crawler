@@ -20,21 +20,29 @@ def filter_stream( yt ):
     return mystream
 
 def upload_bucket( video_path, audio_path ):
-    video_upload_command = "gsutil cp "+video_path+" gs://videos-dbst-shutapp/"+video_path
-    print(video_upload_command)
+    video_upload_command = "gsutil cp '"+video_path+"' 'gs://videos-dbst-shutapp/"+video_path+"'"
     os.system(video_upload_command)
-    remove_video_command = "rm "+video_path
+    remove_video_command = "rm '"+video_path+"'"
     os.system(remove_video_command)
-    audio_upload_command = "gsutil cp "+audio_path+" gs://videos-dbst-shutapp/"+audio_path
-    print(audio_upload_command)
+    print("Video Removed")
+    audio_upload_command = "gsutil cp '"+audio_path+"' 'gs://videos-dbst-shutapp/"+audio_path+"'"
     os.system(audio_upload_command)
-    remove_audio_command = "rm "+audio_path
+    remove_audio_command = "rm '"+audio_path+"'"
     os.system(remove_audio_command)
+    print("Audio Removed")
 
-
+def correction ( name ):
+    name = name.replace(" ","_")
+    name = name.replace("[","_")
+    name = name.replace("]","_")
+    name = name.replace("(","_")
+    name = name.replace(")","_")
+    name = name.replace("{","_")
+    name = name.replace("}","_")
+    return name
 
 def download_video( link, folder ):
-    folder = folder.replace(" ","_")
+    folder = correction(folder)
     video_folder = "Videos/"+folder
     audio_folder = "Audios/"+folder
     try:
@@ -57,14 +65,14 @@ def download_video( link, folder ):
     # print(video_stream)
     # print(audio_stream)
     # video_filename = video_stream.default_filename
-    video_filename = video_title.replace(" ","_")
-    audio_filename = video_title.replace(" ","_")
+    video_filename = correction(video_title)
+    audio_filename = correction(video_title)
     print("Video = "+video_filename)
     # print(audio_filename)
     video_file_path = video_folder+"/"+video_stream.default_filename
-    video_file_path = video_file_path.replace(" ","_")
+    video_file_path = correction(video_file_path)
     audio_file_path = audio_folder+"/"+audio_filename+".mp3"
-    audio_file_path = audio_file_path.replace(" ","_")
+    audio_file_path = correction(audio_file_path)
     print("Video Path = "+video_file_path)
     print("Audio Path = "+audio_file_path)
 
@@ -86,4 +94,4 @@ def download_video( link, folder ):
     if path.exists(video_file_path):
         upload_bucket(video_file_path,audio_file_path)
     else:
-        print("Could not run upload bucket")
+        print("Could not run upload bucket command")
