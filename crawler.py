@@ -5,7 +5,7 @@ import sys
 
 a=int(sys.argv[1])
 file_name = str(sys.argv[2])
-file_name = "../Crawler-Input/"+file_name
+file_name = "Crawler-Input/"+file_name
 channel_list = file_name
 with open(channel_list, 'r') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
