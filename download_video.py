@@ -2,7 +2,9 @@ from pytube import YouTube
 import os
 from os import path
 import sys
-# print(len(all_streams)
+import subprocess
+import logging
+logging.basicConfig(filename='app.log',level=logging.INFO)
 
 def filter_stream( yt ):
     # prog_streams = yt.streams.all()
@@ -21,15 +23,23 @@ def filter_stream( yt ):
 
 def upload_bucket( video_path, audio_path ):
     video_upload_command = "gsutil cp '"+video_path+"' 'gs://videos-dbst-shutapp/"+video_path+"'"
-    os.system(video_upload_command)
+    returned_value = subprocess.check_output(video_upload_command, shell=True)  # returns the exit code in unix
+    # os.system(video_upload_command)
+    logging.info(str(time.asctime( time.localtime(time.time()) )) + str(returned_value.decode("utf-8")))
     remove_video_command = "rm '"+video_path+"'"
     os.system(remove_video_command)
-    print("Video Removed")
+    logging.info(str(time.asctime( time.localtime(time.time()) )) +" Video Removed from Local Instance")
+    # print("Video Removed")
+
     audio_upload_command = "gsutil cp '"+audio_path+"' 'gs://videos-dbst-shutapp/"+audio_path+"'"
-    os.system(audio_upload_command)
+    returned_value = subprocess.check_output(audio_upload_command, shell=True)  # returns the exit code in unix
+    # os.system(audio_upload_command)
+    logging.info(str(time.asctime( time.localtime(time.time()) )) + str(returned_value.decode("utf-8")))
+    logging.info(str(time.asctime( time.localtime(time.time()) )) +" Audio Copied to Google Bucket")
     remove_audio_command = "rm '"+audio_path+"'"
     os.system(remove_audio_command)
-    print("Audio Removed")
+    logging.info(str(time.asctime( time.localtime(time.time()) )) +" Audio Removed from local Instance")
+    # print("Audio Removed")
 
 def correction ( name ):
     name = name.replace(" ","_")
@@ -45,6 +55,7 @@ def download_video( link, folder ):
     folder = correction(folder)
     video_folder = "Videos/"+folder
     audio_folder = "Audios/"+folder
+    # os.mkdir(video_folder)
     try:
         os.mkdir(video_folder)
         print("Directory " , video_folder ,  " Created ")
@@ -73,23 +84,27 @@ def download_video( link, folder ):
     video_file_path = correction(video_file_path)
     audio_file_path = audio_folder+"/"+audio_filename+".mp3"
     audio_file_path = correction(audio_file_path)
-    print("Video Path = "+video_file_path)
-    print("Audio Path = "+audio_file_path)
+    # print("Video Path = "+video_file_path)
+    # print("Audio Path = "+audio_file_path)
 
     if path.exists(video_file_path):
         print("Video Already Exists = "+video_file_path)
+        logging.info( str(time.asctime( time.localtime(time.time()) )) +"Video Already Exists = "+video_filename)
     else:
         print("Downloading Video = "+ str(video_filename))
         video_stream.download(video_folder, video_filename)
+        logging.info(str(time.asctime( time.localtime(time.time()) )) +"File Downloaded = "+video_filename)
 
     # print ("Creating Audio = "+str(audio_filename))
     if path.exists(audio_file_path):
         print("Audio Already Exists = "+audio_file_path)
+        logging.info( str(time.asctime( time.localtime(time.time()) )) +"Audio Already Exists = "+audio_filename)
     else:
         print("Creating Audio = "+ str(audio_filename))
         command = "ffmpeg -i \'"+video_file_path+"\' -ab 160k -ac 2 -ar 44100 \'"+audio_file_path+"'"
         # audio_stream.download(audio_folder)
         os.system(command)
+        logging.info(str(time.asctime( time.localtime(time.time()) )) +"Audio Created = "+audio_filename)
 
     if path.exists(video_file_path):
         upload_bucket(video_file_path,audio_file_path)
