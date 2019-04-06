@@ -5,7 +5,19 @@ import sys
 import subprocess
 import logging
 import time
-logging.basicConfig(filename='app.log',level=logging.INFO)
+import datetime
+
+current_date = datetime.datetime.now()
+if ( current_date.hour < 6 ):
+     log_file_name = 'logs/'+str(current_date.date())+'_1.log'
+elif ( current_date.hour < 12 and current_date.hour > 6 ) :
+    log_file_name = 'logs/'+str(current_date.date())+'_2.log'
+elif ( current_date.hour < 18 and current_date.hour > 12 ) :
+    log_file_name = 'logs/'+str(current_date.date())+'_3.log'
+else :
+    log_file_name = 'logs/'+str(current_date.date())+'_4.log'
+
+logging.basicConfig(filename=log_file_name,level=logging.INFO)
 
 def filter_stream( yt ):
     # prog_streams = yt.streams.all()
@@ -23,7 +35,7 @@ def filter_stream( yt ):
     return mystream
 
 def upload_bucket( video_path, audio_path ):
-    video_upload_command = "gsutil cp '"+video_path+"' 'gs://videos-dbst-shutapp/"+video_path+"'"
+    video_upload_command = "gsutil cp \""+video_path+"\" \"gs://videos-dbst-shutapp/"+video_path+"\""
     returned_value = subprocess.check_output(video_upload_command, shell=True)  # returns the exit code in unix
     # os.system(video_upload_command)
     logging.info(str(time.asctime( time.localtime(time.time()) )) + str(returned_value.decode("utf-8")))
@@ -32,7 +44,7 @@ def upload_bucket( video_path, audio_path ):
     logging.info(str(time.asctime( time.localtime(time.time()) )) +" Video Removed from Local Instance")
     # print("Video Removed")
 
-    audio_upload_command = "gsutil cp '"+audio_path+"' 'gs://videos-dbst-shutapp/"+audio_path+"'"
+    audio_upload_command = "gsutil cp \""+audio_path+"\" \"gs://videos-dbst-shutapp/"+audio_path+"\""
     returned_value = subprocess.check_output(audio_upload_command, shell=True)  # returns the exit code in unix
     # os.system(audio_upload_command)
     logging.info(str(time.asctime( time.localtime(time.time()) )) + str(returned_value.decode("utf-8")))
@@ -50,6 +62,8 @@ def correction ( name ):
     name = name.replace(")","_")
     name = name.replace("{","_")
     name = name.replace("}","_")
+    name = name.replace("\'","_")
+    name = name.replace("\"","_")
     return name
 
 def download_video( link, folder ):

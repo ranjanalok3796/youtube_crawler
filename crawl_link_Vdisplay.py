@@ -10,7 +10,19 @@ import sys
 import download_video
 from os import path
 import logging
-logging.basicConfig(filename='app.log',level=logging.INFO)
+import datetime
+
+current_date = datetime.datetime.now()
+if ( current_date.hour < 6 ):
+     log_file_name = 'logs/'+str(current_date.date())+'_1.log'
+elif ( current_date.hour < 12 and current_date.hour > 6 ) :
+    log_file_name = 'logs/'+str(current_date.date())+'_2.log'
+elif ( current_date.hour < 18 and current_date.hour > 12 ) :
+    log_file_name = 'logs/'+str(current_date.date())+'_3.log'
+else :
+    log_file_name = 'logs/'+str(current_date.date())+'_4.log'
+
+logging.basicConfig(filename=log_file_name,level=logging.INFO)
 
 display = Display(visible=0, size=(1366, 768))
 display.start()
